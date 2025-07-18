@@ -1,0 +1,5 @@
+# Nix build result symlink
+result
+
+# Generated outputs
+outputs/
