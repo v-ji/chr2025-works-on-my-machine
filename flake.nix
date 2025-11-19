@@ -85,6 +85,11 @@
           '';
         };
 
+        dockerShell = pkgs.dockerTools.buildNixShellImage rec {
+          drv = self.packages.${pkgs.system}.default;
+          tag = drv.version or null;
+        };
+
         requirements = pkgs.stdenv.mkDerivation {
           name = "requirements-txt";
           buildInputs = [
