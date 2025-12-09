@@ -29,7 +29,7 @@
     in
     {
       devShells = forAllSystems (pkgs: {
-        default = pkgs.mkShell {
+        default = pkgs.mkShellNoCC {
           packages = [
             (getPythonEnv pkgs)
 
@@ -50,7 +50,7 @@
       });
 
       packages = forAllSystems (pkgs: {
-        default = pkgs.stdenv.mkDerivation {
+        default = pkgs.stdenvNoCC.mkDerivation {
           name = "chr2025-works-on-my-machine";
           version = "1.0.0";
           src = ./.;
@@ -90,7 +90,7 @@
           tag = drv.version or null;
         };
 
-        requirements = pkgs.stdenv.mkDerivation {
+        requirements = pkgs.stdenvNoCC.mkDerivation {
           name = "requirements-txt";
           buildInputs = [
             (getPythonEnv pkgs)
